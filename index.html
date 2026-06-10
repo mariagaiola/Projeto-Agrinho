@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gota Consciente | Sustentabilidade no Campo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- PALETA DE CORES ---
+           Verde Floresta (Escuro): #1b3322
+           Verde Sálvia (Médio): #4a6b53
+           Verde Oliva Claro (Suave): #8fa88b
+           Fundo Off-White: #f7f9f6
+           Texto Escuro: #2c3530
+        ------------------------ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f7f9f6;
+            color: #2c3530;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #1b3322;
+            font-weight: 600;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background-color: rgba(247, 249, 246, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(27, 51, 34, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1b3322;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a6b53;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1b3322;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(27, 51, 34, 0.6), rgba(27, 51, 34, 0.4)), 
+                        url('https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: #f7f9f6;
+        }
+
+        .hero h1 {
+            color: #f7f9f6;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #4a6b53;
+            color: #f7f9f6;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #1b3322;
+            transform: translateY(-2px);
+        }
+
+        /* --- SEÇÕES GERAIS --- */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: #8fa88b;
+            margin: 15px auto 0;
+        }
+
+        /* --- PILARES / CARDS --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(27, 51, 34, 0.02);
+            border-top: 4px solid #8fa88b;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(27, 51, 34, 0.06);
+            border-top-color: #1b3322;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #556259;
+        }
+
+        /* --- CALCULADORA INTERATIVA --- */
+        .interactive-box {
+            background-color: #1b3322;
+            color: #f7f9f6;
+            padding: 50px;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .interactive-box h3 {
+            color: #f7f9f6;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #8fa88b;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #4a6b53;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group select option {
+            background-color: #1b3322;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+            font-size: 1.1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1b3322;
+            color: #8fa88b;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- ANIMAÇÕES --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simplificado para o exemplo */
+            .interactive-box { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <nav class="navbar">
+            <a href="#" class="logo">Gota Consciente</a>
+            <ul class="nav-links">
+                <li><a href="#tecnologias">Tecnologias</a></li>
+                <li><a href="#calculadora">Simulador</a></li>
+                <li><a href="#sobre">O Legado</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" style="max-width: 100%; padding: 0;">
+        <h1>O futuro da agricultura flui com precisão.</h1>
+        <p>Unindo a sabedoria da terra com a tecnologia de conservação para preservar o nosso recurso mais valioso: a água.</p>
+        <a href="#tecnologias" class="btn">Conheça as Soluções</a>
+    </section>
+
+    <section id="tecnologias">
+        <h2 class="section-title">Tecnologias de Conservação</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Irrigação por Gotejamento</h3>
+                <p>Direciona a água direto para as raízes das plantas, reduzindo drasticamente a evaporação e o desperdício. Economia de até 50% em comparação aos métodos tradicionais.</p>
+            </div>
+            <div class="card">
+                <h3>Captação de Água da Chuva</h3>
+                <p>Sistemas estruturados para coletar, filtrar e armazenar a água pluvial em cisternas e reservatórios preparados, garantindo autonomia em épocas de estiagem.</p>
+            </div>
+            <div class="card">
+                <h3>Sensores de Umidade do Solo</h3>
+                <p>Monitores inteligentes que analisam a real necessidade do solo em tempo real. A rega só acontece quando e onde é estritamente necessário.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculadora" style="background-color: #eedfd21a; max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 20px 0;">
+            <h2 class="section-title">Simulador de Economia</h2>
+            <div class="interactive-box">
+                <h3>Calcule seu potencial de preservação</h3>
+                
+                <div class="form-group">
+                    <label for="area">Tamanho da Área Cultivada (em hectares):</label>
+                    <input type="number" id="area" placeholder="Ex: 10" min="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="metodo">Método Atual de Irrigação:</label>
+                    <select id="metodo">
+                        <option value="aspersao">Aspersão Convencional (Alto consumo)</option>
+                        <option value="sulco">Inundação/Sulcos (Altíssimo consumo)</option>
+                    </select>
+                </div>
+
+                <button class="btn" style="width: 100%; background-color: #4a6b53;" onclick="calcularEconomia()">Calcular Impacto</button>
+
+                <div class="result" id="resultado-box">
+                    <p id="resultado-texto"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" style="text-align: center; max-width: 800px;">
+        <h2 class="section-title">Nosso Manifesto</h2>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: #4a6b53; line-height: 1.8;">
+            "Produzir em harmonia com a natureza não é mais uma escolha alternativa, é o único caminho para a perenidade. Cultivar o solo protegendo a água é garantir o alimento de hoje sem comprometer a existência do amanhã."
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Gota Consciente. Cultivando um amanhã sustentável.</p>
+    </footer>
+
+    <script>
+        // Efeito de mudar o fundo do Header ao rolar a página
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = '#ffffff';
+                header.style.boxShadow = '0 4px 20px rgba(27, 51, 34, 0.08)';
+            } else {
+                header.style.backgroundColor = 'rgba(247, 249, 246, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(27, 51, 34, 0.05)';
+            }
+        });
+
+        // Lógica da Calculadora Econômica
+        function calcularEconomia() {
+            const area = document.getElementById('area').value;
+            const metodo = document.getElementById('metodo').value;
+            const resultadoBox = document.getElementById('resultado-box');
+            const resultadoTexto = document.getElementById('resultado-texto');
+
+            if (!area || area <= 0) {
+                alert("Por favor, insira uma área válida.");
+                return;
+            }
+
+            // Estimativas fictícias de economia por hectare/ano (em litros) baseadas na transição para gotejamento inteligente
+            let litrosEconomizadosPorHectare = metodo === 'aspersao' ? 1200000 : 2500000;
+            let totalEconomizado = area * litrosEconomizadosPorHectare;
+
+            // Formata o número para o padrão brasileiro
+            let totalFormatado = totalEconomizado.toLocaleString('pt-BR');
+
+            resultadoTexto.innerHTML = `Ao migrar para o gotejamento de precisão e sensores de solo em sua propriedade de <strong>${area} hectares</strong>, estimamos que você poderá economizar aproximadamente <strong style="color: #8fa88b;">${totalFormatado} litros</strong> de água por ano!`;
+            
+            // Mostra o box com efeito simples
+            resultadoBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
