@@ -1,2 +1,6 @@
 # Tema do meu Projeto 
-esse site é sobre o projeto agrinho
+
+projeto desenvolvido para o concurso agrinho, buscando como o 
+
+#Objetivo e tema 
+"SUSTENTABILIDADE . uso consciete da agua no campo"
