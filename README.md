@@ -1,2 +1,2 @@
-# tema do meu projeto 
+# Tema do meu Projeto 
 esse site é sobre o projeto agrinho
